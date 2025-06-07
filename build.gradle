@@ -24,14 +24,28 @@ repositories {
 }
 
 dependencies {
+	// Spring
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
+
+	// Outros
 	implementation 'io.hypersistence:hypersistence-tsid:2.1.4'
+	implementation 'org.apache.commons:commons-email:1.5'
+
+	// Lombok
+	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// Banco de dados
+	runtimeOnly 'com.h2database:h2'
+
+	// Testes
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+	testImplementation 'org.mockito:mockito-core:5.12.0'
+	testImplementation 'org.mockito:mockito-junit-jupiter:5.12.0'
 }
 
 tasks.named('test') {

@@ -55,8 +55,8 @@ public class CommentController {
 
     @GetMapping
     public Page<CommentOutput> search(@PageableDefault Pageable pageable){
-        Page<Comment> sensors = commentRepository.findAll(pageable);
-        return sensors.map(this::convertToOutput);
+        Page<Comment> comments = commentRepository.findAll(pageable);
+        return comments.map(this::convertToOutput);
     }
 
 
